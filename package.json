@@ -3,7 +3,7 @@
   "displayName": "regex",
   "description": "regex tool to show regex101 webpage locally!",
   "version": "0.0.1",
-  "icon": "media/regex.ico",
+  "icon": "media/regex.png",
   "engines": {
     "vscode": "^1.82.0"
   },
@@ -20,9 +20,30 @@
     "commands": [
       {
         "command": "regex.helloWorld",
-        "title": "Hello World"
+        "title": "regex101"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "regex101",
+          "title": "regex101",
+          "icon": "media/regex.svg"
+        }
+      ]
+    },
+    "views": {
+      "regex101": [
+        {
+          "type": "webview",
+          "id": "regex101.webview",
+          "name": "regex101",
+          "icon": "media/regex.svg",
+          "visibility": "visible",
+          "contextualTitle": "regex101"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
