@@ -19,7 +19,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "regex.helloWorld",
+        "command": "regex101.open",
         "title": "regex101"
       }
     ],
