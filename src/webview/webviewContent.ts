@@ -52,9 +52,6 @@ export function getDashboardContent(
     var explainerRegex101JsPath = getMediaResource(context, webview, 'explainer.regex101.1436803512.js');
     var commonRegex101JsPath = getMediaResource(context, webview, 'common.regex101.1436803517.js');
     var matcherRegex101JsPath = getMediaResource(context, webview, 'matcher.regex101.1436803513.js');
-    var javascriptRegex101JsPath = getMediaResource(context, webview, 'javascript.regex101.js');
-    var pcreRegex101JsPath = getMediaResource(context, webview, 'pcre.regex101.js');
-    var pcrelib16JsPath = getMediaResource(context, webview, 'pcrelib16.js.js');
 
 
     return `
@@ -501,17 +498,24 @@ export function getDashboardContent(
         <script src="${explainerRegex101JsPath}" type="text/javascript"></script>
         <script src="${commonRegex101JsPath}" type="text/javascript"></script>
         <script src="${matcherRegex101JsPath}" type="text/javascript"></script>
-        <script src="${javascriptRegex101JsPath}" type="text/javascript"></script>
-        <script src="${pcreRegex101JsPath}" type="text/javascript"></script>
-        <script src="${pcrelib16JsPath}" type="text/javascript"></script>
+
     </body>
 
+    
     </html>
 `;
 }
 
+
 function getMediaResource(context: vscode.ExtensionContext, webview: vscode.Webview, name: string) {
     let resource = vscode.Uri.file(path.join(context.extensionPath, 'media', name));
+    resource = webview.asWebviewUri(resource);
+
+    return resource;
+}
+
+function getJsResource(context: vscode.ExtensionContext, webview: vscode.Webview, name: string) {
+    let resource = vscode.Uri.file(path.join(context.extensionPath, 'js', name));
     resource = webview.asWebviewUri(resource);
 
     return resource;
